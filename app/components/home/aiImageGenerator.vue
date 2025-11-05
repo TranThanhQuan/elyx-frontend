@@ -1,8 +1,8 @@
 <template>
-  <section id="ai-image-generator" class="pt-16 pb-16 bg-black text-white">
+  <section id="ai-image-generator" class="pt-24 pb-16 bg-[#111011] text-white">
     <!-- Header -->
     <div class="max-w-screen-xl mx-auto mb-10 text-center">
-      <h2 class="text-3xl md:text-5xl font-extrabold text-white">
+      <h2 class="text-3xl md:text-5xl font-bold text-white mb-4">
         AI Image Generator
       </h2>
     </div>
@@ -15,7 +15,7 @@
             :reverse="reverseColumns[index]" pause-on-hover class="h-full flex flex-col items-center">
             <img v-for="(image, i) in col" :key="`col${index}-img${i}`" :src="image.src" :alt="image.alt" :class="[
               imageSize,
-              'rounded-2xl shadow-lg transition-transform duration-300 hover:scale-105 hover:brightness-110'
+              'rounded-2xl shadow-lg transition-transform duration-300 hover-bounce  hover:brightness-110'
             ]" />
           </UMarquee>
         </template>
@@ -100,14 +100,29 @@ const columns = [
 <style scoped>
 .before\:from-default {
     &::before { 
-        --tw-gradient-from: #000000;
+        --tw-gradient-from: #111011;
          
     }
 }
 
 .after\:from-default {
     &::after { 
-        --tw-gradient-from: #000; 
+        --tw-gradient-from: #111011; 
     }
 }
+
+
+
+@keyframes hoverBounce {
+  0% { transform: scale(1); }
+  30% { transform: scale(0.95); }
+  60% { transform: scale(1); }
+  100% { transform: scale(1); }
+}
+
+.hover-bounce:hover {
+  animation: hoverBounce 0.5s ease-in-out;
+  filter: brightness(1.1);
+}
+
 </style>

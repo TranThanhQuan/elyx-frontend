@@ -11,6 +11,7 @@ export default defineNuxtConfig({
   },
 
   nitro: {
+    preset: 'static',
     devProxy: {
       '/api': {
         target: 'http://127.0.0.1:8000', // Laravel chạy port 8000
@@ -20,6 +21,8 @@ export default defineNuxtConfig({
     },
   },
 
+  ssr: false,
+   
   runtimeConfig: {
     public: {
       apiBase: process.env.NUXT_PUBLIC_API_BASE || '/api',
@@ -40,6 +43,16 @@ export default defineNuxtConfig({
     '~/plugins/flowbite.client.js',
   ],
 
+  fonts: {
+    families: [
+      {
+        name: 'Inter',
+        provider: 'google',  
+        weights: [400, 500, 600, 700],
+      },
+    ],
+  },
+
   app: {
     head: {
       title: 'Elyx AI Chat Bot',
@@ -51,10 +64,10 @@ export default defineNuxtConfig({
           
       ],
       link: [ 
-        {
-          rel: 'stylesheet',
-          href: 'https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap',
-        },
+        // {
+        //   rel: 'stylesheet',
+        //   href: 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap',
+        // },
         {
           rel: 'icon',
           type: 'image/png',

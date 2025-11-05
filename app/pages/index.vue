@@ -1,18 +1,19 @@
 <template>
-    <div class=" bg-black mx-auto">
+    <div class=" bg-[#111011] mx-auto">
         <Navbar />
+        <!-- s1: hero full -->
+        <heroFull />
 
-        <!-- s1: hero -->
-        <Hero />
-
-        <!-- s2: video generator -->
-        <aiVideoGenerator />
+        <!-- s2: ai chat -->
+        <aiChat />
 
         <!-- s3: image generator -->
         <aiImageGenerator />
 
-        <!-- s4: ai chat -->
-        <aiChat />
+        <!-- s4: video generator -->
+        <aiVideoGenerator />
+
+        
 
         <!-- s5: plans -->
         <plans />
@@ -24,8 +25,8 @@
 <script setup>
 
 import Navbar from '../components/nav.vue'
-import Footer from '../components/footer.vue'
-import Hero from '../components/home/hero.vue'
+import Footer from '../components/footer.vue' 
+import HeroFull from '../components/home/hero-full.vue'
 import aiVideoGenerator from '../components/home/aiVideoGenerator.vue'
 import aiImageGenerator from '../components/home/aiImageGenerator.vue'
 import aiChat from '../components/home/aiChat.vue'

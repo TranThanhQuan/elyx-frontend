@@ -1,33 +1,50 @@
 <template>
-    <section id="ai-chat" class="pt-16 pb-16 bg-black text-white">
+    <section id="ai-chat" class="pt-24 pb-16 bg-[#111011] text-white">
         <div class="max-w-6xl mx-auto text-center">
             <!-- Header -->
-            <h2 class="text-2xl md:text-3xl font-bold mb-8 text-white">
-                Discover what our app can help with
+            <h2 class="text-3xl md:text-5xl font-bold text-white mb-4">
+                AI Chat
             </h2>
+
+            <p class="text-white mb-12 text-xl">
+                Discover what our app can help with
+            </p>
 
             <!-- Top Category Buttons -->
             <div class="flex flex-wrap justify-center gap-4 mb-10">
+                <!-- <button v-for="(item, index) in categories" :key="index" @click="activeCategory = item.key"
+                    class="px-6 py-3 rounded-xl   transition-all duration-300 cursor-pointer "
+                    :class="activeCategory === item.key ? 'border-2 border-white text-white bg-linear-to-r from-[#57dede] to-[#fd99ff]' : '  text-white border-2 border-[#ffffff1a] '">
+
+                    <Icon :name="item.icon" class="w-10 h-10 " /> 
+                         
+                    <p >{{ item.name }}</p>
+                </button> -->
+
+
+
                 <button v-for="(item, index) in categories" :key="index" @click="activeCategory = item.key"
-                    class="px-6 py-3 rounded-xl  text-white transition-all duration-300 cursor-pointer " :class="activeCategory === item.key
-                        ? 'bg-[#048861] text-white'
-                        : 'bg-gray-800 hover:bg-[#048861] text-white'
-                        ">
-                        <img :src="item.icon" alt="feature icon" class="w-8 h-8 object-contain mx-auto " />
-                        <span class="text-white">{{ item.name }}</span>
+                    class="category-btn " style="padding: 18px;" :class="{ active: activeCategory === item.key }">
+                    <div class="inner flex flex-col items-center gap-2">
+                        <!-- <Icon :name="item.icon" class="w-10 h-10" /> -->
+                        <img :src="item.icon" alt="category icon" class="w-10 h-10 object-contain" />
+                        <p>{{ item.name }}</p>
+                    </div>
                 </button>
+
             </div>
 
-            <!-- Dynamic Content --> 
+            <!-- Dynamic Content -->
             <div class="flex flex-wrap justify-center ">
                 <div v-for="(feature, i) in filteredFeatures" :key="i"
-                    class="p-4 bg-gray-800 rounded-xl shadow-sm hover:shadow-md transition-all w-full md:w-1/4 lg:w-1/3 xl:w-1/4 m-2 ">
+                    class="   bg-white/5 rounded-xl shadow-sm hover:shadow-md transition-all w-full md:w-1/4 lg:w-1/3 xl:w-1/4 m-2 "
+                    style="padding: 32px;">
                     <div>
                         <img :src="feature.icon" alt="feature icon" class="w-12 h-12 object-contain mx-auto mb-3" />
                         <h3 class="font-bold text-lg mb-1 text-center text-white">
                             {{ feature.title }}
                         </h3>
-                        <p class="text-white text-base text-center ">{{ feature.desc }}</p>
+                        <p class="text-white text-base text-center font-thin">{{ feature.desc }}</p>
                     </div>
                 </div>
             </div>
@@ -42,18 +59,18 @@ const activeCategory = ref('english')
 
 const categories = [
     { key: 'english', name: 'English', icon: '/images/icon/english.svg' },
-    { key: 'life-coach', name: 'Life Coach', icon: '/images/icon/life_coach.svg' },
-    { key: 'content', name: 'Content', icon: '/images/icon/content.svg' },
-    { key: 'relationship', name: 'Relationship', icon: '/images/icon/relationship.svg' },
-    { key: 'fitness-coach', name: 'Fitness Coach', icon: '/images/icon/fitness_coach.svg' },
-    { key: 'financial-mentor', name: 'Financial Mentor', icon: '/images/icon/financial_mentor.svg' },
-    { key: 'developer', name: 'Developer', icon: '/images/icon/developer.svg' }
+    { key: 'life-coach', name: 'Life Coach', icon: '/images/icon/user.svg' },
+    { key: 'content', name: 'Social Content', icon: '/images/icon/twitter.svg' },
+    { key: 'relationship', name: 'Relationship', icon: '/images/icon/heart.svg' },
+    { key: 'fitness-coach', name: 'Fitness Coach', icon: '/images/icon/fitness.svg' },
+    { key: 'financial-mentor', name: 'Financial Mentor', icon: '/images/icon/dollar.svg' },
+    { key: 'developer', name: 'Developer', icon: '/images/icon/coder.svg' }
 ]
 
 const features = {
     'english': [
         { icon: '/images/icon/english.png', title: 'English Writing Skills', desc: 'Learn to express ideas clearly and write with better grammar and structure.' },
-        { icon: '/images/icon/ilets.png', title: 'IELTS Planning Guide', desc: 'Prepare strategically to reach your target IELTS band score.' },
+        { icon: '/images/icon/translate.png', title: 'IELTS Planning Guide', desc: 'Prepare strategically to reach your target IELTS band score.' },
         { icon: '/images/icon/business.png', title: 'Business English', desc: 'Communicate professionally in meetings, emails, and presentations.' },
         { icon: '/images/icon/idiom.png', title: 'Idioms & Phrasal Verbs', desc: 'Use natural English expressions to sound fluent.' },
     ],
@@ -102,5 +119,66 @@ const filteredFeatures = computed(() => features[activeCategory.value])
 <style scoped>
 button {
     min-width: 140px;
+}
+
+button>span:first-child {
+    mask-composite: exclude;
+    -webkit-mask-composite: destination-out;
+}
+
+.text-gra {
+    background: linear-gradient(to right, #31c7ce, #ec3bf4);
+
+}
+
+
+
+.category-btn {
+    position: relative;
+    overflow: hidden;
+    border-radius: 0.75rem;
+    padding: 0.75rem 1.5rem;
+    cursor: pointer;
+    color: white;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.category-btn .inner {
+    position: relative;
+    z-index: 10;
+}
+
+.category-btn.active {
+    border-color: #111011;
+}
+
+/* Active state */
+.category-btn.active::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    padding: 2px;
+    border-radius: 0.75rem;
+    background: linear-gradient(to right, #57dede, #fd99ff);
+    -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    z-index: 0;
+}
+
+.category-btn.active::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 0.75rem;
+    background: linear-gradient(to right, rgba(87, 222, 222, 0.1), rgba(253, 153, 255, 0.1));
+    z-index: 1;
 }
 </style>

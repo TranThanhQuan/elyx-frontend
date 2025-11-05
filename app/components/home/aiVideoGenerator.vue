@@ -1,23 +1,27 @@
 <template>
-    <section id="ai-video-generator" class="pt-16 pb-16 bg-black text-white max-w-screen-xl mx-auto">
-        <div class="max-w-screen-xl mx-auto  mb-10">
-            <h2 class="text-3xl md:text-5xl font-extrabold text-white   text-center">
-                AI video generator
+    <section id="ai-video-generator" class="pt-24 pb-16 bg-[#111011] text-white   mx-auto">
+        <div class="  mx-auto  mb-10">
+            <h2 class="text-3xl md:text-5xl font-bold text-white mb-4 text-center">
+                AI Video Generator
             </h2>
+
+            <p class="text-white mb-12 text-xl text-center">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.
+            </p>
         </div>
 
-        <div class=" mx-auto text-center  p-4 md:px-16  overflow-hidden">
-            <!-- video auto play -->
+        <!-- <div class=" mx-auto text-center  p-4 md:px-16  overflow-hidden">
+            
             <video autoplay loop muted playsinline class="w-full h-full object-cover rounded-3xl">
                 <source src="/videos/vid_generator.mp4" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
-        </div>
+        </div> -->
 
         <!-- 2 colum  -->
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 px-4 md:px-16">
-            <div class="col-span-1 rounded-3xl bg-gradient-to-r from-[#e2f2f7] to-[#87b5fb] p-6">
+        <!-- <div class="grid grid-cols-1 md:grid-cols-2 gap-4 px-4 md:px-16">
+            <div class="col-span-1 rounded-3xl bg-linear-to-r from-[#e2f2f7] to-[#87b5fb] p-6">
                 <h2 class="text-3xl font-bold text-black">
                     Human-sounding voiceovers to bring your videos to life
                 </h2>
@@ -36,7 +40,33 @@
                     Comming soon
                 </button>
             </div>
+        </div> -->
+
+        <div class="max-w-screen-xl md:px-16 h-[50vh] grid grid-cols-1 md:grid-cols-2 gap-4 mx-auto">
+            <!-- Video bên trái -->
+            <div class="relative overflow-hidden">
+                <video class="absolute top-0 left-0 w-full h-full object-cover rounded-3xl" autoplay muted loop playsinline>
+                    <source src="/videos/web-page3-comic-1.mp4" type="video/mp4" />
+                    Trình duyệt của bạn không hỗ trợ video.
+                </video>
+            </div>
+
+            <!-- Video bên phải -->
+            <div class="relative overflow-hidden">
+                <video class="absolute top-0 left-0 w-full h-full object-cover rounded-3xl" autoplay muted loop playsinline>
+                    <source src="/videos/web-page3-comic-2.mp4" type="video/mp4" />
+                    Trình duyệt của bạn không hỗ trợ video.
+                </video>
+            </div>
         </div>
+
+
+
+
+
+
+
+
 
 
 
