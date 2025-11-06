@@ -1,10 +1,14 @@
 <template>
   <section id="ai-image-generator" class="pt-24 pb-16 bg-[#111011] text-white">
     <!-- Header -->
-    <div class="max-w-screen-xl mx-auto mb-10 text-center">
+    <div class="max-w-7xl mx-auto mb-10 text-center">
       <h2 class="text-3xl md:text-5xl font-bold text-white mb-4">
         AI Image Generator
       </h2>
+
+      <p class="text-white mb-12 text-xl text-center">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.
+      </p>
     </div>
 
     <!-- Gallery -->
@@ -99,30 +103,40 @@ const columns = [
 
 <style scoped>
 .before\:from-default {
-    &::before { 
-        --tw-gradient-from: #111011;
-         
-    }
+  &::before {
+    --tw-gradient-from: #111011;
+
+  }
 }
 
 .after\:from-default {
-    &::after { 
-        --tw-gradient-from: #111011; 
-    }
+  &::after {
+    --tw-gradient-from: #111011;
+  }
 }
 
 
 
 @keyframes hoverBounce {
-  0% { transform: scale(1); }
-  30% { transform: scale(0.95); }
-  60% { transform: scale(1); }
-  100% { transform: scale(1); }
+  0% {
+    transform: scale(1);
+  }
+
+  30% {
+    transform: scale(0.95);
+  }
+
+  60% {
+    transform: scale(1);
+  }
+
+  100% {
+    transform: scale(1);
+  }
 }
 
 .hover-bounce:hover {
   animation: hoverBounce 0.5s ease-in-out;
   filter: brightness(1.1);
 }
-
 </style>

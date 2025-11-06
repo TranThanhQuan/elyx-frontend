@@ -6,23 +6,12 @@
                 AI Chat
             </h2>
 
-            <p class="text-white mb-12 text-xl">
+            <p class="text-white mb-12 text-xl text-center">
                 Discover what our app can help with
             </p>
 
             <!-- Top Category Buttons -->
             <div class="flex flex-wrap justify-center gap-4 mb-10">
-                <!-- <button v-for="(item, index) in categories" :key="index" @click="activeCategory = item.key"
-                    class="px-6 py-3 rounded-xl   transition-all duration-300 cursor-pointer "
-                    :class="activeCategory === item.key ? 'border-2 border-white text-white bg-linear-to-r from-[#57dede] to-[#fd99ff]' : '  text-white border-2 border-[#ffffff1a] '">
-
-                    <Icon :name="item.icon" class="w-10 h-10 " /> 
-                         
-                    <p >{{ item.name }}</p>
-                </button> -->
-
-
-
                 <button v-for="(item, index) in categories" :key="index" @click="activeCategory = item.key"
                     class="category-btn " style="padding: 18px;" :class="{ active: activeCategory === item.key }">
                     <div class="inner flex flex-col items-center gap-2">

@@ -10,76 +10,35 @@
             </p>
         </div>
 
-        <!-- <div class=" mx-auto text-center  p-4 md:px-16  overflow-hidden">
-            
-            <video autoplay loop muted playsinline class="w-full h-full object-cover rounded-3xl">
-                <source src="/videos/vid_generator.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
-        </div> -->
 
-        <!-- 2 colum  -->
-
-        <!-- <div class="grid grid-cols-1 md:grid-cols-2 gap-4 px-4 md:px-16">
-            <div class="col-span-1 rounded-3xl bg-linear-to-r from-[#e2f2f7] to-[#87b5fb] p-6">
-                <h2 class="text-3xl font-bold text-black">
-                    Human-sounding voiceovers to bring your videos to life
-                </h2>
-
-                <img src="/images/voiceover-graphic.webp" alt="voiceover" class="rounded-3xl p-6">
-            </div>
-            <div class="col-span-1 rounded-3xl bg-black p-6 ">
-                <h2 class="text-3xl font-bold text-white">
-                    Collaborate in real-time with multiplayer editing
-                </h2>
-
-                <img src="/images/collaborate-ai-3x.webp" alt="multiplayer" class=" rounded-3xl p-6">
-
-                <button type="button" @click="handleClick"
-                    class=" text-white px-4 py-2  font-bold  border-white border-2 rounded-full cursor-pointer">
-                    Comming soon
-                </button>
-            </div>
-        </div> -->
-
-        <div class="max-w-screen-xl md:px-16 h-[50vh] grid grid-cols-1 md:grid-cols-2 gap-4 mx-auto">
-            <!-- Video bên trái -->
+        <div class="max-w-7xl md:px-16 h-[50vh] grid grid-cols-1 md:grid-cols-2 gap-4 mx-auto">
+            <!-- left video -->
             <div class="relative overflow-hidden">
-                <video class="absolute top-0 left-0 w-full h-full object-cover rounded-3xl" autoplay muted loop playsinline>
-                    <source src="/videos/web-page3-comic-1.mp4" type="video/mp4" />
-                    Trình duyệt của bạn không hỗ trợ video.
+                <video  
+                    class="fade-video absolute top-0 left-0 w-full h-full object-cover rounded-xl transition-opacity duration-500"
+                    autoplay muted loop playsinline>
+                    <source src="/videos/11522.mp4" type="video/mp4" />
+                    Browser not supported video.
                 </video>
             </div>
 
-            <!-- Video bên phải -->
+            <!-- left video -->
             <div class="relative overflow-hidden">
-                <video class="absolute top-0 left-0 w-full h-full object-cover rounded-3xl" autoplay muted loop playsinline>
-                    <source src="/videos/web-page3-comic-2.mp4" type="video/mp4" />
-                    Trình duyệt của bạn không hỗ trợ video.
+                <video class="fade-video absolute top-0 left-0 w-full h-full object-cover rounded-xl transition-opacity duration-500" autoplay muted loop
+                    playsinline>
+                    <source src="/videos/1121.mp4" type="video/mp4" />
+                    Browser not supported video.
                 </video>
             </div>
         </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
     </section>
-
 
 </template>
 
 
 <script setup>
-
+import { ref, onMounted, onBeforeUnmount } from 'vue'
 
 // check if the button is clicked
 const isCommingSoon = ref(false)
@@ -89,4 +48,44 @@ const handleClick = () => {
     alert('Comming soon')
 }
 
+onMounted(() => {
+  const videos = document.querySelectorAll('.fade-video')
+  const fadeDuration = 1
+
+  const setupFadeForVideo = (video) => {
+    const handleTimeUpdate = () => {
+      const remaining = video.duration - video.currentTime
+
+      if (remaining <= fadeDuration) {
+        const ratio = remaining / fadeDuration
+        video.style.opacity = ratio
+      } else if (video.currentTime < 0.2) {
+        const ratio = Math.min(video.currentTime / 0.2, 1)
+        video.style.opacity = ratio
+      } else {
+        video.style.opacity = 1
+      }
+    }
+
+    const onLoadedMetadata = () => {
+      video.addEventListener('timeupdate', handleTimeUpdate)
+    }
+
+    video.addEventListener('loadedmetadata', onLoadedMetadata)
+
+    // Cleanup cho video này
+    return () => {
+      video.removeEventListener('loadedmetadata', onLoadedMetadata)
+      video.removeEventListener('timeupdate', handleTimeUpdate)
+    }
+  }
+
+  // Lặp qua tất cả video
+  const cleanups = Array.from(videos).map(setupFadeForVideo)
+
+  // Cleanup toàn bộ khi component bị destroy
+  onBeforeUnmount(() => {
+    cleanups.forEach((fn) => fn && fn())
+  })
+})
 </script>

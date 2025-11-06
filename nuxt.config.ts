@@ -55,10 +55,10 @@ export default defineNuxtConfig({
 
   app: {
     head: {
-      title: 'Elyx AI Chat Bot',
+      title: 'Elyx AI Chat',
       meta: [
-        { name: 'description', content: 'Elyx AI Chat Bot' },
-        { name: 'keywords', content: 'Elyx AI Chat Bot' },
+        { name: 'description', content: 'Elyx AI Chat' },
+        { name: 'keywords', content: 'Elyx AI Chat' },
         { name: 'author', content: 'Elyx Team' },
         { name: 'viewport', content: 'width=device-width, initial-scale=1.0' }, 
           

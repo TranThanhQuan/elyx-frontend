@@ -6,8 +6,8 @@
                 NEXT GENERATION AI ASSISTANT</h1>
 
             <button
-                class=" my-4 text-white px-4 py-2 rounded-md bg-gradient-to-r from-[#2ACDCD] to-[#F236F5] font-bold">Elyx
-                AI Chat Bot</button>
+                class=" my-4 text-white px-4 py-2 rounded-md bg-linear-to-r from-[#2ACDCD] to-[#F236F5] font-bold">Elyx
+                AI Chat</button>
 
             <p class="mb-8 text-xl font-medium text-white  sm:px-16 xl:px-48 ">Meet Elyx,
                 the new standard in intelligent conversation, designed to understand you naturally and respond with
@@ -26,7 +26,7 @@
                         alt="icon google play" />
                 </a>
             </div>
-            <div class="mx-auto text-center md:max-w-screen-lg  ">
+            <div class="mx-auto text-center md:max-w-5xl  ">
                 <!-- video auto play -->
                 <video autoplay loop muted playsinline class="w-full h-full object-cover rounded-3xl">
                     <source src="/videos/vid_hero.mp4" type="video/mp4">
